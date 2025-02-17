@@ -6,9 +6,11 @@ LIB = libft
 
 LIB_PATH = $(LIB)/$(LIB).a
 
-HEAD = NULL
+HEAD = push_swap.h
 
-SRCS = NULL
+SRCS = main.c \
+       stack.c \
+       read_args.c
 
 SRCS_BONUS = NULL
 
