@@ -42,5 +42,5 @@ re: fclean all
 superclean: fclean
 	cd $(LIB) && make fclean
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re superclean
 
