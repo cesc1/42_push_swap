@@ -1,5 +1,5 @@
 *.a
 *.o
 main.c
-*.out
+push_swap
 *.qmd
