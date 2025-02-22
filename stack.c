@@ -31,7 +31,6 @@ void	stack_pop(t_stack **stack)
 
 	tmp = (*stack)->next;
 	(*stack)->num = 0;
-	(*stack) = NULL;
 	free(*stack);
 	*stack = tmp;
 }
