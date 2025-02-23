@@ -8,9 +8,9 @@ typedef struct s_stack
 }	t_stack;
 
 //list functions
-t_stack	*stack_new(int num);
 int	stack_add(t_stack **stack, int num);
-int	stack_size(t_stack *stack);
+void	stack_clear(t_stack **stack);
 void	stack_pop(t_stack **stack);
+int	stack_size(t_stack *stack);
 
 #endif

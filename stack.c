@@ -1,7 +1,7 @@
 #include "push_swap.h"
 #include <stdlib.h>
 
-t_stack	*stack_new(int num)
+static t_stack	*stack_new(int num)
 {
 	t_stack	*result;
 
@@ -33,4 +33,12 @@ void	stack_pop(t_stack **stack)
 	(*stack)->num = 0;
 	free(*stack);
 	*stack = tmp;
+}
+
+void	stack_clear(t_stack **stack)
+{
+	while (*stack)
+	{
+		stack_pop(stack);
+	}
 }
