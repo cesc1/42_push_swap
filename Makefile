@@ -9,6 +9,7 @@ LIB_PATH = $(LIB)/$(LIB).a
 HEAD = push_swap.h
 
 SRCS = main.c \
+       utils.c \
        stack.c \
        stack_utils.c \
        read_args.c \

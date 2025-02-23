@@ -1,6 +1,8 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+#include <stddef.h>
+
 typedef struct s_stack
 {
 	int		num;
@@ -14,12 +16,14 @@ void	stack_pop(t_stack **stack);
 int	stack_size(t_stack *stack);
 
 // Operations
-void	swap(t_stack *stack);
-void	swap_swap(t_stack *a, t_stack *b);
-void	push(t_stack **a, t_stack **b);
-void	rotate(t_stack *stack);
-void	rotate_rotate(t_stack *a, t_stack *b);
-void	reverse_rotate(t_stack *stack);
-void	reverse_rotate_rotate(t_stack *a, t_stack *b);
+void	swap(t_stack *stack, const char *title);
+void	swap_swap(t_stack *a, t_stack *b, const char *title);
+void	push(t_stack **a, t_stack **b, const char *title);
+void	rotate(t_stack *stack, const char *title);
+void	rotate_rotate(t_stack *a, t_stack *b, const char *title);
+void	reverse_rotate(t_stack *stack, const char *title);
+void	reverse_rotate_rotate(t_stack *a, t_stack *b, const char *title);
 
+// Utils
+void	print_title(const char *title, const char *expect);
 #endif

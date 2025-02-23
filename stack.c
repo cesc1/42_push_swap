@@ -7,7 +7,9 @@ static t_stack	*stack_new(int num)
 
 	result = (t_stack *)malloc(sizeof (t_stack));
 	if (!result)
+	{
 		return (NULL);
+	}
 	result->num = num;
 	result->next = NULL;
 	return (result);
