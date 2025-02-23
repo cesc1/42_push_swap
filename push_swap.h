@@ -18,5 +18,8 @@ void	swap(t_stack *stack);
 void	swap_swap(t_stack *a, t_stack *b);
 void	push(t_stack **a, t_stack **b);
 void	rotate(t_stack *stack);
+void	rotate_rotate(t_stack *a, t_stack *b);
+void	reverse_rotate(t_stack *stack);
+void	reverse_rotate_rotate(t_stack *a, t_stack *b);
 
 #endif
