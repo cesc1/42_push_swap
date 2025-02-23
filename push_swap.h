@@ -14,7 +14,7 @@ int	stack_add(t_stack **stack, int num);
 void	stack_clear(t_stack **stack);
 void	stack_pop(t_stack **stack);
 int	stack_size(t_stack *stack);
-
+void	stack_print(t_stack *a, t_stack *b);
 // Operations
 void	swap(t_stack *stack, const char *title);
 void	swap_swap(t_stack *a, t_stack *b, const char *title);
