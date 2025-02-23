@@ -10,7 +10,11 @@ HEAD = push_swap.h
 
 SRCS = main.c \
        stack.c \
-       read_args.c
+       stack_utils.c \
+       read_args.c \
+       operation_swap.c \
+       operation_push.c \
+       operation_rotate.c
 
 SRCS_BONUS = NULL
 
