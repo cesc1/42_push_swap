@@ -42,16 +42,3 @@ void	stack_clear(t_stack **stack)
 		stack_pop(stack);
 	}
 }
-
-int	stack_size(t_stack *stack)
-{
-	int	result;
-
-	result = 0;
-	while (stack)
-	{
-		result++;
-		stack = stack->next;
-	}
-	return (result);
-}
