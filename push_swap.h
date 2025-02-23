@@ -7,13 +7,13 @@ typedef struct s_stack
 	struct	s_stack	*next;
 }	t_stack;
 
-//list functions
+// Stack
 int	stack_add(t_stack **stack, int num);
 void	stack_clear(t_stack **stack);
 void	stack_pop(t_stack **stack);
 int	stack_size(t_stack *stack);
 
-//operations
+// Operations
 void	swap(t_stack *stack);
 void	swap_swap(t_stack *a, t_stack *b);
 void	push(t_stack **a, t_stack **b);
