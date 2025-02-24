@@ -4,22 +4,11 @@
 int	main(void)
 {
 	t_stack	*a;
-	t_stack	*b;
 
 	a = NULL;
-	b = NULL;
-	stack_add(&a, 1);
-	stack_add(&a, 2);
-	stack_add(&a, 3);
-	stack_print(a, b);
-	push(&a, &b, "pa");
-	stack_print(a, b);
-	push(&a, &b, "pa");
-	stack_print(a, b);
-	push(&a, &b, "pa");
-	stack_print(a, b);
+	add_num_stack(&a, "as");
+	ft_printf("%d", a->num);
 
 	stack_clear(&a);
-	stack_clear(&b);
 	return (0);
 }
