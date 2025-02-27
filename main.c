@@ -7,19 +7,10 @@ int	main(int argc, char **argv)
 
 	ab = read_args(argc, argv);
 	ab_print(*ab);
-	ab_operate(ab, "sa");
+	ab_operate(ab, "ra");
 	ab_print(*ab);
-	ab_operate(ab, "sb");
+	ab_operate(ab, "rra");
 	ab_print(*ab);
-	ab_operate(ab, "pb");
-	ab_operate(ab, "pb");
-	ab_operate(ab, "pb");
-	ab_print(*ab);
-	ab_operate(ab, "sa");
-	ab_print(*ab);
-	ab_operate(ab, "sb");
-	ab_print(*ab);
-	ab_operate(ab, "a");
 	ab_clear(ab);
 
 	return (0);

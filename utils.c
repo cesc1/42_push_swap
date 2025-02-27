@@ -15,6 +15,15 @@ int	stack_size(t_stack *stack)
 	return (result);
 }
 
+t_stack *stack_last(t_stack *stack)
+{
+	if (!stack)
+		return (stack);
+	while (stack->next)
+		stack = stack->next;
+	return (stack);
+}
+
 void	ab_print(t_stack_ab ab)
 {
 	ft_printf("====Stack====\n");

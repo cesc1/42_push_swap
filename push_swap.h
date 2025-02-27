@@ -21,6 +21,7 @@ int	stack_add(t_stack **stack, int num);
 void	stack_clear(t_stack **stack);
 void	stack_pop(t_stack **stack);
 int	stack_size(t_stack *stack);
+t_stack *stack_last(t_stack *stack);
 
 // Stack_ab
 t_stack_ab	*ab_new();

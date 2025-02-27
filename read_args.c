@@ -29,6 +29,26 @@ static int	validate_str(char *str)
 	return (1);
 }
 
+static int	validate_reps(t_stack *b)
+{
+	int	num;
+	t_stack	*iterator;
+
+	while (b->next)
+	{
+		num = b->num;
+		iterator = b->next;
+		while (iterator)
+		{
+			if (num == iterator->num)
+				return (0);
+			iterator = iterator->next;
+		}
+		b = b->next;
+	}
+	return (1);
+}
+
 static void	add_num_stack(t_stack_ab *ab, char *str, int stack_num)
 {
 	int	check;
@@ -47,6 +67,7 @@ static void	add_num_stack(t_stack_ab *ab, char *str, int stack_num)
 		exit_program(ab);
 }
 
+
 t_stack_ab	*read_args(int argc, char **argv)
 {
 	int	i;
@@ -62,7 +83,7 @@ t_stack_ab	*read_args(int argc, char **argv)
 		add_num_stack(ab, argv[i], 2);
 		i++;
 	}
-	if (i == MAX_INT)
+	if (i == MAX_INT || !validate_reps(ab->b))
 		exit_program(ab);
 	while (ab->b)
 	{
