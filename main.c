@@ -6,10 +6,7 @@ int	main(int argc, char **argv)
 	t_stack_ab	*ab;
 
 	ab = read_args(argc, argv);
-	ab_print(*ab);
-	ab_operate(ab, "ra");
-	ab_print(*ab);
-	ab_operate(ab, "rra");
+	sort_cesc(ab);
 	ab_print(*ab);
 	ab_clear(ab);
 

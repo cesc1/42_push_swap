@@ -15,7 +15,8 @@ SRCS = main.c \
        operation_swap.c \
        operation_push.c \
        operation_rotate.c \
-       utils.c
+       utils.c \
+       sort_cesc.c
 
 SRCS_BONUS = NULL
 

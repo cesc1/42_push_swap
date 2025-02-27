@@ -42,4 +42,6 @@ void	reverse_rotate_rotate(t_stack *a, t_stack *b);
 // Read data
 t_stack_ab	*read_args(int argc, char **argv);
 
+// Algorithm
+void	sort_cesc(t_stack_ab *ab);
 #endif
