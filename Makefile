@@ -9,13 +9,13 @@ LIB_PATH = $(LIB)/$(LIB).a
 HEAD = push_swap.h
 
 SRCS = main.c \
-       utils.c \
        stack.c \
-       stack_utils.c \
+       stack_ab.c \
        read_args.c \
        operation_swap.c \
        operation_push.c \
-       operation_rotate.c
+       operation_rotate.c \
+       utils.c
 
 SRCS_BONUS = NULL
 

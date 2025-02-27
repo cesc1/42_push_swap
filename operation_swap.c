@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	swap(t_stack *stack, const char *title)
+void	swap(t_stack *stack)
 {
 	int	tmp;
 
@@ -9,12 +9,10 @@ void	swap(t_stack *stack, const char *title)
 	tmp = stack->num;
 	stack->num = stack->next->num;
 	stack->next->num = tmp;
-	print_title(title, "sa sb");
 }
 
-void	swap_swap(t_stack *a, t_stack *b, const char *title)
+void	swap_swap(t_stack *a, t_stack *b)
 {
-	swap(a, NULL);
-	swap(b, NULL);
-	print_title(title, "ss");
+	swap(a);
+	swap(b);
 }

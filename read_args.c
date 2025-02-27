@@ -1,6 +1,5 @@
 #include "push_swap.h"
 #include "libft/libft.h"
-#include <stdlib.h>
 
 static int	validate_str(char *str)
 {
@@ -29,22 +28,20 @@ static int	validate_str(char *str)
 	return (1);
 }
 
-void	add_num_stack(t_stack **stack, char *str)
+void	add_num_stack(t_stack_ab *ab, char *str, int stack_num)
 {
-	if (validate_str(str))
-	{
-		if (!stack_add(stack, ft_atoi(str)))
-		{
-			stack_clear(stack);
-			ft_printf("Error\n");
-			exit(1);
-		}
+	int	check;
 
-	}
-	else
+	check = validate_str(str);
+	if (check)
 	{
-		stack_clear(stack);
-		ft_printf("Error\n");
-		exit(1);
-	}	
+		if (stack_num == 1)
+			check = stack_add(&(ab->a), ft_atoi(str));
+		else if (stack_num == 2)
+			check = stack_add(&(ab->b), ft_atoi(str));
+		else
+			check = 0;
+	}
+	if (!check)
+		exit_program(ab);
 }

@@ -2,41 +2,44 @@
 #include "libft/libft.h"
 #include <stdlib.h>
 
-static void	free_split(char **split)
+int	stack_size(t_stack *stack)
 {
-	int	i;
+	int	result;
 
-	i = -1;
-	while (split[++i])
+	result = 0;
+	while (stack)
 	{
-		free(split[i]);
+		result++;
+		stack = stack->next;
 	}
-	free(split);
+	return (result);
 }
 
-void	print_title(const char *title, const char *expect)
+void	ab_print(t_stack_ab ab)
 {
-	char	**split;
-	int	i;
-
-	if (!title)
-		return ;
-	split = ft_split(expect, ' ');
-	if (!split)
+	ft_printf("====Stack====\n");
+	while (ab.a || ab.b)
 	{
-		ft_printf("Error: out of memory\n");
-		return ;
-	}
-	i = -1;
-	while (split[++i])
-	{
-		if (ft_strncmp(title, split[i], ft_strlen(split[i] + 1)) == 0)
+		if (ab.a)
 		{
-			ft_printf("%s\n", title);
-			free_split(split);
-			return ;
+			ft_printf("%d", ab.a->num);
+			ab.a = ab.a->next;
 		}
+		if (ab.b)
+		{
+			ft_printf("\t%d\n", ab.b->num);
+			ab.b = ab.b->next;
+		}
+		else
+			ft_printf("\t\n");
 	}
-	ft_printf("Error: wrong title name\n");
-	free_split(split);
+	ft_printf("_\t_\n");
+	ft_printf("a\tb\n");
+}
+
+void	exit_program(t_stack_ab *ab)
+{
+	ab_clear(ab);
+	ft_printf("Error\n");
+	exit(1);
 }
