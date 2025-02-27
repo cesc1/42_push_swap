@@ -7,7 +7,6 @@ int	main(int argc, char **argv)
 
 	ab = read_args(argc, argv);
 	sort_cesc(ab);
-	ab_print(*ab);
 	ab_clear(ab);
 
 	return (0);

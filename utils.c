@@ -49,6 +49,6 @@ void	ab_print(t_stack_ab ab)
 void	exit_program(t_stack_ab *ab)
 {
 	ab_clear(ab);
-	ft_printf("Error\n");
+	ft_putendl_fd("Error", 2);
 	exit(1);
 }
