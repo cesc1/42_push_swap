@@ -1,19 +1,24 @@
 #include "push_swap.h"
 #include "libft/libft.h"
+#include <stdlib.h>
 
-t_stack_ab	ab_new(t_stack *a, t_stack *b)
+t_stack_ab	*ab_new()
 {
-	t_stack_ab	result;
+	t_stack_ab	*ab;
 
-	result.a = a;
-	result.b = b;
-	return (result);
+	ab = (t_stack_ab *)malloc(sizeof (t_stack_ab));
+	if (!ab)
+		exit(1);
+	ab->a = NULL;
+	ab->b = NULL;
+	return (ab);
 }
 
 void	ab_clear(t_stack_ab *ab)
 {
 	stack_clear(&(ab->a));
 	stack_clear(&(ab->b));
+	free(ab);
 }
 
 void	ab_operate(t_stack_ab *ab, char	*code)

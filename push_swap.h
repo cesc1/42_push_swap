@@ -23,7 +23,7 @@ void	stack_pop(t_stack **stack);
 int	stack_size(t_stack *stack);
 
 // Stack_ab
-t_stack_ab	ab_new(t_stack *a, t_stack *b);
+t_stack_ab	*ab_new();
 void	ab_clear(t_stack_ab *ab);
 void	ab_operate(t_stack_ab *ab, char *operation);
 void	ab_print(t_stack_ab ab);
@@ -39,6 +39,6 @@ void	reverse_rotate(t_stack *stack);
 void	reverse_rotate_rotate(t_stack *a, t_stack *b);
 
 // Read data
-void	add_num_stack(t_stack_ab *ab, char *str, int stack_num);
+t_stack_ab	*read_args(int argc, char **argv);
 
 #endif

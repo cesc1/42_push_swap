@@ -1,5 +1,6 @@
 #include "push_swap.h"
 #include "libft/libft.h"
+#include <stdlib.h>
 
 static int	validate_str(char *str)
 {
@@ -28,7 +29,7 @@ static int	validate_str(char *str)
 	return (1);
 }
 
-void	add_num_stack(t_stack_ab *ab, char *str, int stack_num)
+static void	add_num_stack(t_stack_ab *ab, char *str, int stack_num)
 {
 	int	check;
 
@@ -44,4 +45,28 @@ void	add_num_stack(t_stack_ab *ab, char *str, int stack_num)
 	}
 	if (!check)
 		exit_program(ab);
+}
+
+t_stack_ab	*read_args(int argc, char **argv)
+{
+	int	i;
+	const int	MAX_INT = 2147483647;
+	t_stack_ab	*ab;
+
+	if (argc <= 1)
+		exit(1);
+	ab = ab_new(NULL, NULL);
+	i = 1;
+	while (argv[i] && i < MAX_INT)
+	{
+		add_num_stack(ab, argv[i], 2);
+		i++;
+	}
+	if (i == MAX_INT)
+		exit_program(ab);
+	while (ab->b)
+	{
+		push(&(ab->b), &(ab->a));
+	}
+	return (ab);
 }
