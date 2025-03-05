@@ -5,26 +5,28 @@ NAME = push_swap
 LIB = libft
 
 LIB_PATH = $(LIB)/$(LIB).a
+SRC_PATH = src
+OBJ_PATH = obj
 
-HEAD = push_swap.h
+HEAD = header/push_swap.h
 
-SRCS = main.c \
-       stack.c \
-       stack_ab.c \
-       read_args.c \
-       operation_swap.c \
-       operation_push.c \
-       operation_rotate.c \
-       utils.c \
-       sort_cesc.c
+SRCS = src/main.c \
+       src/stack.c \
+       src/stack_ab.c \
+       src/read_args.c \
+       src/operation_swap.c \
+       src/operation_push.c \
+       src/operation_rotate.c \
+       src/utils.c \
+       src/sort_cesc.c
 
 SRCS_BONUS = NULL
 
-OBJS = $(patsubst %.c, %.o, $(SRCS))
+OBJS = $(patsubst $(SRC_PATH)/%.c, $(OBJ_PATH)/%.o, $(SRCS))
 OBJS_BONUS = $(patsubst %.c, %.o, $(SRCS_BONUS))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Iheader/ -I. -Wall -Wextra -Werror -g
 
 #===============================================
 
@@ -36,7 +38,8 @@ $(NAME): $(OBJS) $(HEAD) Makefile $(LIB_PATH)
 $(LIB_PATH):
 	cd $(LIB) && make
 
-%.o: %.c
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
+	mkdir -p $(OBJ_PATH)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
