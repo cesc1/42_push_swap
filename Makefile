@@ -38,8 +38,10 @@ $(NAME): $(OBJS) $(HEAD) Makefile $(LIB_PATH)
 $(LIB_PATH):
 	cd $(LIB) && make
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
+$(OBJ_PATH):
 	mkdir -p $(OBJ_PATH)
+
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c | $(OBJ_PATH)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
