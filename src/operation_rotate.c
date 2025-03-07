@@ -2,17 +2,17 @@
 
 void	rotate(t_stack *stack)
 {
-	int	num_first;
+	int	first_num;
 
 	if (!stack)
 		return ;
-	num_first = stack->num;
-	while (stack->next)
+	first_num = stack->num;
+	while (stack->idx)
 	{
 		stack->num = stack->next->num;
 		stack = stack->next;
 	}
-	stack->num = num_first;
+	stack->num = first_num;
 }
 
 void	rotate_rotate(t_stack *a, t_stack *b)
@@ -23,21 +23,19 @@ void	rotate_rotate(t_stack *a, t_stack *b)
 
 void	reverse_rotate(t_stack *stack)
 {
-	t_stack	*original;
-	int	tmp[2];
-
+	int	first_num;
+	size_t	first_idx;
+	
 	if (!stack)
 		return ;
-	original = stack;
-	tmp[0] = stack->num;
-	while (stack->next)
+	first_num = stack->num;
+	first_idx = stack->idx;
+	while (stack->prev->idx < first_idx)
 	{
-		tmp[1] = stack->next->num;
-		stack->next->num = tmp[0];
-		tmp[0] = tmp[1];
-		stack = stack->next;
+		stack->num = stack->prev->num;
+		stack = stack->prev;
 	}
-	original->num = tmp[0];
+	stack->num = first_num;
 }
 
 void	reverse_rotate_rotate(t_stack *a, t_stack *b)

@@ -29,65 +29,65 @@ static int	validate_str(char *str)
 	return (1);
 }
 
-static int	validate_reps(t_stack *b)
+static int	validate_rep(t_stack *b, int num)
 {
-	int	num;
-	t_stack	*iterator;
-
-	while (b->next)
+	while (b)
 	{
-		num = b->num;
-		iterator = b->next;
-		while (iterator)
-		{
-			if (num == iterator->num)
-				return (0);
-			iterator = iterator->next;
-		}
+		if (num == b->num)
+			return (0);
+		if (b->idx <= b->next->idx)
+			break;
 		b = b->next;
 	}
 	return (1);
 }
 
-static void	add_num_stack(t_stack_ab *ab, char *str, int stack_num)
+static void	add_num_stack(t_dstack *dstack, char *str, int stack_num)
 {
 	int	check;
+	int	num;
 
 	check = validate_str(str);
 	if (check)
 	{
+		num = ft_atoi(str);
 		if (stack_num == 1)
-			check = stack_add(&(ab->a), ft_atoi(str));
+		{
+			check = validate_rep(dstack->a, num);
+			check = check && stack_add(&(dstack->a), num);
+		}
 		else if (stack_num == 2)
-			check = stack_add(&(ab->b), ft_atoi(str));
+		{
+			check = validate_rep(dstack->b, num);
+			check = check && stack_add(&(dstack->b), num);
+		}
 		else
 			check = 0;
 	}
 	if (!check)
-		exit_program(ab);
+		exit_program(dstack);
 }
 
-
-t_stack_ab	*read_args(int argc, char **argv)
+t_dstack	*read_args(int argc, char **argv)
 {
 	int	i;
 	const int	MAX_INT = 2147483647;
-	t_stack_ab	*ab;
+	t_dstack	*dstack;
 
 	if (argc <= 1)
 		exit(1);
-	ab = ab_new(NULL, NULL);
+	dstack = dstack_new();
 	i = 1;
 	while (argv[i] && i < MAX_INT)
 	{
-		add_num_stack(ab, argv[i], 2);
+		add_num_stack(dstack, argv[i], 2);
 		i++;
 	}
-	if (i == MAX_INT || !validate_reps(ab->b))
-		exit_program(ab);
-	while (ab->b)
+	if (i == MAX_INT)
+		exit_program(dstack);
+	while (dstack->b)
 	{
-		push(&(ab->b), &(ab->a));
+		push(&(dstack->b), &(dstack->a));
 	}
-	return (ab);
+	return (dstack);
 }

@@ -2,42 +2,35 @@
 #include "libft/libft.h"
 #include <stdlib.h>
 
-int	stack_size(t_stack *stack)
+static void	init_check(int	*check_print, t_dstack *dstack)
 {
-	int	result;
-
-	result = 0;
-	while (stack)
-	{
-		result++;
-		stack = stack->next;
-	}
-	return (result);
+	check_print[0] = 0;
+	check_print[1] = 0;
+	if (dstack->a)
+		check_print[0] = 1;
+	if (dstack->b)
+		check_print[1] = 1;
 }
 
-t_stack *stack_last(t_stack *stack)
+void	dstack_print(t_dstack dstack)
 {
-	if (!stack)
-		return (stack);
-	while (stack->next)
-		stack = stack->next;
-	return (stack);
-}
+	int	check_print[2];
 
-void	ab_print(t_stack_ab ab)
-{
+	init_check(check_print, &dstack);
 	ft_printf("====Stack====\n");
-	while (ab.a || ab.b)
+	while (check_print[0] || check_print[1])
 	{
-		if (ab.a)
+		if (check_print[0])
 		{
-			ft_printf("%d", ab.a->num);
-			ab.a = ab.a->next;
+			ft_printf("%d", dstack.a->num);
+			check_print[0] = dstack.a->idx > dstack.a->next->idx;
+			dstack.a = dstack.a->next;
 		}
-		if (ab.b)
+		if (check_print[1])
 		{
-			ft_printf("\t%d\n", ab.b->num);
-			ab.b = ab.b->next;
+			ft_printf("\t%d\n", dstack.b->num);
+			check_print[0] = dstack.b->num > dstack.b->next->num;
+			dstack.b = dstack.b->next;
 		}
 		else
 			ft_printf("\t\n");
@@ -46,9 +39,9 @@ void	ab_print(t_stack_ab ab)
 	ft_printf("a\tb\n");
 }
 
-void	exit_program(t_stack_ab *ab)
+void	exit_program(t_dstack *dstack)
 {
-	ab_clear(ab);
+	dstack_clear(dstack);
 	ft_putendl_fd("Error", 2);
 	exit(1);
 }

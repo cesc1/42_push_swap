@@ -12,7 +12,7 @@ HEAD = header/push_swap.h
 
 SRCS = src/main.c \
        src/stack.c \
-       src/stack_ab.c \
+       src/dstack.c \
        src/read_args.c \
        src/operation_swap.c \
        src/operation_push.c \

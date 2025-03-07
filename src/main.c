@@ -3,11 +3,12 @@
 
 int	main(int argc, char **argv)
 {
-	t_stack_ab	*ab;
+	t_dstack	*dstack;
 
-	ab = read_args(argc, argv);
-	sort_cesc(ab);
-	ab_clear(ab);
+	dstack = read_args(argc, argv);
+	sort_cesc(dstack);
+	dstack_print(*dstack);	
+	dstack_clear(dstack);
 
 	return (0);
 }
