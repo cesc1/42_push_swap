@@ -28,6 +28,7 @@ int	stack_add(t_stack **stack, int num)
 		node->prev = node->next->prev;
 		node->idx = node->next->idx + 1;
 		node->next->prev = node;
+		node->prev->next = node;
 	}
 	*stack = node;
 	return (1);

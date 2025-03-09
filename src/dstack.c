@@ -49,3 +49,35 @@ void	dstack_operate(t_dstack *dstack, char	*code)
 		exit_program(dstack);
 	ft_printf("%s\n", code);
 }
+
+t_stack	*stack_dup(t_stack *stack)
+{
+	t_stack	*result;
+
+	result = NULL;
+	while (stack)
+	{
+		if (!stack_add(&result, stack->num))
+		{
+			stack_clear(&stack);
+			return (NULL);
+		}
+		rotate(result);
+		if (stack->idx == 0)
+			break ;
+		stack = stack->next;
+	}
+	return (result);
+}
+
+t_dstack	*dstack_dup(t_dstack *dstack)
+{
+	t_dstack	*result;
+
+	result = dstack_new();
+	if (!result)
+		return (NULL);
+	result->a = stack_dup(dstack->a);
+	result->b = stack_dup(dstack->b);
+	return (result);
+}

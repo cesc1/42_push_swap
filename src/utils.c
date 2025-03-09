@@ -2,35 +2,26 @@
 #include "libft/libft.h"
 #include <stdlib.h>
 
-static void	init_check(int	*check_print, t_dstack *dstack)
-{
-	check_print[0] = 0;
-	check_print[1] = 0;
-	if (dstack->a)
-		check_print[0] = 1;
-	if (dstack->b)
-		check_print[1] = 1;
-}
-
 void	dstack_print(t_dstack dstack)
 {
-	int	check_print[2];
-
-	init_check(check_print, &dstack);
 	ft_printf("====Stack====\n");
-	while (check_print[0] || check_print[1])
+	while (dstack.a || dstack.b)
 	{
-		if (check_print[0])
+		if (dstack.a)
 		{
-			ft_printf("%d", dstack.a->num);
-			check_print[0] = dstack.a->idx > dstack.a->next->idx;
-			dstack.a = dstack.a->next;
+			ft_printf("%d\t", dstack.a->num);
+			if (dstack.a->idx == 0)
+				dstack.a = NULL;
+			else
+				dstack.a = dstack.a->next;
 		}
-		if (check_print[1])
+		if (dstack.b)
 		{
-			ft_printf("\t%d\n", dstack.b->num);
-			check_print[0] = dstack.b->num > dstack.b->next->num;
-			dstack.b = dstack.b->next;
+			ft_printf("%d\n", dstack.b->num);
+			if (dstack.b->idx == 0)
+				dstack.b = NULL;
+			else
+				dstack.b = dstack.b->next;		
 		}
 		else
 			ft_printf("\t\n");
