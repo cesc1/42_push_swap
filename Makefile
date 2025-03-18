@@ -19,7 +19,8 @@ SRCS = src/main.c \
        src/operation_rotate.c \
        src/utils.c \
        src/transform.c \
-       src/sort_cesc.c
+       src/sort_cesc.c \
+       src/sort_radix.c
 
 SRCS_BONUS = NULL
 

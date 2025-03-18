@@ -49,4 +49,5 @@ t_stack *transform(t_stack *stack);
 
 // Algorithm
 void	sort_cesc(t_dstack *dstack);
+void	sort_radix(t_dstack *dstack);
 #endif
